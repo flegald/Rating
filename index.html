@@ -1,23 +1,49 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link type="text/css" rel="stylesheet" href="skeleton.css">
+	<script src="chartjs.js"></script>
 </head>
 <body>
-<h1>Horror Novels</h1>
-
+<div class="container" id="head">
+	<div id="top" class="two columns offset-by-three">
+		<h1>Horror Novels</h1>
+	</div>
+</br>
+	<div class="six columns">
 <p><span>"The oldest and strongest emotion of mankind is fear, and the oldest and strongest kind of fear is fear of the unknown."</span>-H.P. Lovecraft</p>
+</div>
+</div>
 </br>
 
-
-
+<div class="container">
+	<div class="three columns pffset-by-three">
+		<p id="direc"> Here you can vote on your favorite horror novels. </br>
+			Press the BEGIN button to start, then click on your favorite book and watch the graph below change!</p>
+		</div>
+	<div class="4 columns offset-by-four">
 <input type="button" id="start" value="Begin!"></input>
+</div>
+</div>
+</br>
+<div class="container">
+		<div class="one-third column">
+			<section id="photo1"></section>
+		</div>
+	
+	
+		<div class="one-third column offset-by-three">
+			<section id="photo2"></section>
+		</div>
+</div>
 
-<div id="photo1"></div>
-
-<div id="photo2"></div>
-
-
+<div class="container">
+	<div class="three columns offset-by-three">
+<canvas id="skills" width="300" height="300"></canvas>
+</div>
+</div>
 
 <script src="app.js"></script>
 </body>
+
 </html>

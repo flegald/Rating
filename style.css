@@ -1,57 +1,15 @@
 body {
 	background-image: url(img/woods.jpg);
-	position: absolute;
-}
-
-p {
 	color: white;
-	background-color: #092c2c; 
 }
 
-span {
-	font-style: italic;
+div#head {
+	background-color: white;
+	color: black;
 }
 
-.title{
-	font-size: 20px;
-}
-
-.auth {
-	font-size: 30px;
-}
-
-input {
-	margin-botton: 100px;
-}
-
-img {
-	width: 250px;
-	border: 2px solid #6b8080;
-	margin-left: auto;
-}
-
-div#photo1 {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-div#photo2 {
-	margin-left: 250px;
-}
-
-div {
-	width:350px;
-	height: 500px;
-	display: inline-block;
-	background-color: #092c2c;
+p#direc {
+	background-color: #22816b;
+	padding:10px;
 	text-align: center;
-	padding: 10px;
-	border: 3px solid #6b8080;
-	color:white;
-}
-
-div:hover {
-	box-shadow: 0 0 10px #ccc;
-	box-shadow: 0 0 10px #ccc; 
-	box-shadow: 0 0 10px #ccc; 
 }

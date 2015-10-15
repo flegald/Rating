@@ -1,9 +1,12 @@
+bookArray = [];
+
 function book(tite, year, author, source){
 	this.tite = tite;
 	this.year = year;
 	this.author = author;
 	this.source = source;
 	this.track = 0;
+	bookArray.push(this);	
 	}
 
 var american = new book('American Psycho', '1991', 'Bret Easton Ellis', 'file:///Users/admin-1/School/rating/img/american.jpg');
@@ -28,17 +31,18 @@ var shine = new book('The Shining', '1977', 'Stephen King', 'file:///Users/admin
 var stand = new book('The Stand', '1978', 'Stephen King', 'file:///Users/admin-1/School/rating/img/stand.jpg');
 var wwz = new book('World War Z', '2006', 'Max Brooks', 'file:///Users/admin-1/School/rating/img/wwz.jpg');
 
-var bookArray = [american, anni, baby, blood, cthulu, exorcist, frank, hill, haunt, heart, house, it, john, lamb, mountain, necro, river, scary, shine, stand, wwz]
-
-
 function showPhoto(){
 
-		var random1 = Math.floor(Math.random() * bookArray.length);
-		var random2 = Math.floor(Math.random() * bookArray.length);
+	var random1 = Math.floor(Math.random() * bookArray.length);
+	var random2 = Math.floor(Math.random() * bookArray.length);
 
-		var grab1 = document.getElementById('photo1');
-		var grab2 = document.getElementById('photo2');
+	var grab1 = document.getElementById('photo1');
+	var grab2 = document.getElementById('photo2');
 		
+	while (random1 === random2){
+		random2 = Math.floor(Math.random() * bookArray.length)
+	}
+
 		if (grab1.firstChild) {
 			while (grab1.firstChild){
 				grab1.removeChild(grab1.firstChild);
@@ -49,18 +53,9 @@ function showPhoto(){
 		insert.id = "chosen1";
 		insert.src = bookArray[random1].source;	
 		grab1.appendChild(insert);
-		insertTitle = document.createTextNode(bookArray[random1].tite);
-		insertTitle.class = 'title';
-		grab1.appendChild(insertTitle);
-		insertAuth = document.createTextNode(bookArray[random1].author);
-		insertAuth.class = 'auth';
-		grab1.appendChild(insertAuth); 
-		insertYear = document.createTextNode(bookArray[random1].year);
-		insertYear.class = 'year';
-		grab1.appendChild(insertYear);
-
 		
-if (grab2.firstChild) {
+		
+	if (grab2.firstChild) {
 			while (grab2.firstChild){
 				grab2.removeChild(grab2.firstChild);
 			}
@@ -70,21 +65,12 @@ if (grab2.firstChild) {
 		insert.src = bookArray[random2].source;
 		insert.id = 'chosen2';
 		grab2.appendChild(insert);
-		insertTitle = document.createTextNode(bookArray[random2].tite);
-		insertTitle.class = 'title';
-		grab2.appendChild(insertTitle);
-		insertAuth = document.createTextNode(bookArray[random2].author);
-		insertAuth.class = 'auth';
-		grab2.appendChild(insertAuth); 
-		insertYear = document.createTextNode(bookArray[random2].year);
-		insertYear.class = 'year';
-		grab2.appendChild(insertYear);
 }
 
 var startButt = document.getElementById('start');
 
 
-function tracker1 (){
+var tracker = function (){
  for (var i = 0; i<bookArray.length; i++){
  	if (document.getElementById('chosen1').src == bookArray[i].source){
  		bookArray[i].track += 1;
@@ -92,37 +78,175 @@ function tracker1 (){
 	}
 }
 
-function tracker2 (){
- for (var i = 0; i<bookArray.length; i++){
- 	if (document.getElementById('chosen2').src == bookArray[i].source){
- 		bookArray[i].track += 1;
- 		}
-	}
-}
 
 startButt.addEventListener('click', showPhoto);
 
 place1 = document.getElementById('photo1');
 place2 = document.getElementById('photo2');
 
-place1.addEventListener('click', function() {
-	tracker1();
-	showPhoto();
+
+var mkChart = function(){
+  var data = [
+  {
+    value: bookArray[0].track,
+    label: 'American Psycho',
+    color: '#002626',
+    highlight: '#cce5e5'
+  },
+  {
+     value: bookArray[1].track,
+    label: 'Annihilation',
+    color: '#800000',
+    highlight: '#cce5e5'
+  },
+  {
+     value: bookArray[2].track,
+    label: 'Rosemarys Baby',
+    color: '#002626',
+    highlight: '#cce5e5'
+  },
+  {
+    value: bookArray[3].track,
+    label: 'Books of Blood',
+    color: '#800000',
+    highlight: '#cce5e5'
+  },
+  {
+     value: bookArray[4].track,
+    label: 'Call of Cthulu',
+    color: '#002626',
+    highlight: '#cce5e5'
+  },
+  {
+   value: bookArray[5].track,
+   label: 'Frankenstein',
+   color: '#800000',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[6].track,
+   label: 'The Haunting of Hill House',
+   color: '#002626',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[7].track,
+   label: 'Haunted',
+   color: '#800000',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[8].track,
+   label: 'Heart Shaped Box',
+   color: '#002626',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[9].track,
+   label: 'House of Leaves',
+   color: '#800000',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[10].track,
+   label: 'It',
+   color: '#002626',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[11].track,
+   label: 'John Dies at the End',
+   color: '#800000',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[12].track,
+   label: 'The Silence of the Lambs',
+   color: '#002626',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[13].track,
+   label: 'At the Mountains of Madness',
+   color: '#800000',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[14].track,
+   label: 'The Necronomicon',
+   color: '#002626',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[15].track,
+   label: 'Those Across the River',
+   color: '#800000',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[17].track,
+   label: 'BScary Stories to Tell in the Dark',
+   color: '#002626',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[18].track,
+   label: 'The Shining',
+   color: '#800000',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[19].track,
+   label: 'The Stand',
+   color: '#002626',
+   highlight: '#cce5e5'
+ },
+ {
+   value: bookArray[20].track,
+   label: 'World War Z',
+   color: '#800000',
+   highlight: '#cce5e5'
+ }
+];
+
+  var context = document.getElementById('skills').getContext('2d');
+  var skillsChart = new Chart(context).Doughnut(data, {
+     //Number - Amount of animation steps
+    animationSteps : 200,
+    //String - Animation easing effect
+    animationEasing : "easeOutBounce",
+    //Boolean - Whether we animate the rotation of the Doughnut
+    animateRotate : false,
+    //Boolean - Whether we animate scaling the Doughnut from the centre
+    animateScale : false
+    
+    });
+
+};
+
+
+var storage = function(){
+  for (i = 0; i<bookArray.length;i++){
+  var trackLoop = JSON.stringify(bookArray[i].track);
+  localStorage.setItem('Book Array Track'+ i, bookArray[i].track);
+}
+}
+
+place1.addEventListener('click', function() { 
+  tracker();
+  showPhoto();
+  mkChart();
+  storage();
+  
+
 });
 
 place2.addEventListener('click',function() {
-	tracker2();
-	showPhoto();
+  tracker();
+  showPhoto(); 
+  mkChart();
+  storage();
 });
-
-
-
-
-
-
-
-
-
 
 
 
